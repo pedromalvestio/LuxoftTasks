@@ -12,6 +12,8 @@ namespace LuxoftTasks.SecondTask
 
             //https://gist.github.com/jianminchen/4f4d499599c015144e77e5016bd86912
 
+
+
             return GetMax(monitor, monitor.Length, monitor[1].Length);
         }
 
@@ -29,25 +31,29 @@ namespace LuxoftTasks.SecondTask
                 }
             int max = 0;
             IList<string> curList = new List<string>();
-            for (int i = 0; i < m; i++)
-                for (int j = 0; j < n; j++)
+            for (int i = 0; i < arr.Length; i++)
+                for (int j = 0; j < arr[i].Length; j++)
                 {
-                    if (!visited[i][j])
+                    if (HaveAdjacentDeadPixel(arr,j,i))
                     {
-                        int node = arr[i][j];
-                        if (node == '1')
-                        {
-                            IList<string> list = new List<string>();
-
-                            DFS(arr, i, j, visited, m + n, list);
-
-                            if (list.Count > max)
-                            {
-                                curList = list;
-                                max = list.Count;
-                            }
-                        }
+                        max++;
                     }
+                    //if (!visited[i][j])
+                    //{
+                    //    int node = arr[i][j];
+                    //    if (node == '1')
+                    //    {
+                    //        IList<string> list = new List<string>();
+
+                    //        DFS(arr, i, j, visited, m + n, list);
+
+                    //        if (list.Count > max)
+                    //        {
+                    //            curList = list;
+                    //            max = list.Count;
+                    //        }
+                    //    }
+                    //}
 
                 }
             return max;
@@ -83,6 +89,21 @@ namespace LuxoftTasks.SecondTask
                         visited[i][j] = true;
                 }
             }
+        }
+
+        private static bool HaveAdjacentDeadPixel(char[][] arr, int currentColumn, int currentLine)
+        {
+            return VerifyRelatedPixel(arr, currentColumn - 1, currentLine) || VerifyRelatedPixel(arr, currentColumn + 1, currentLine);
+        }
+
+        private static bool VerifyRelatedPixel(char[][] arr, int currentColumn, int currentLine)
+        {
+            return IsDeadPixel(arr[currentColumn][currentLine - 1]) || IsDeadPixel(arr[currentColumn][currentLine + 1]);
+        }
+
+        private static bool IsDeadPixel(char pixel)
+        {
+            return pixel == '1';
         }
     }
 }
