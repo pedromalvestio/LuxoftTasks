@@ -33,6 +33,12 @@ namespace LuxoftTasks
             };
             Console.WriteLine(new DeadPixels().CountGroups(secondExample).ToString());
 
+            Console.WriteLine("Third Task Solution:");
+            Console.WriteLine("First Task Time Complexity: ");
+            Console.WriteLine("First Task Spatial Complexity: ");
+            Console.WriteLine("Second Task Time Complexity: ");
+            Console.WriteLine("Second Task Spatial Complexity: ");
+
             Console.ReadLine();
            
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LuxoftTasks.SecondTask.ArrayValidator
+namespace LuxoftTasks.SecondTask.ColumnValidator
 {
     public interface IColumnValidator
     {
